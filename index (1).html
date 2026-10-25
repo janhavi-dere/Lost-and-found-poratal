@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lost & Found Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Lost & Found</h1>
+    <p>Lost something? Found something? Post it here so it can get back home.</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Report an item</h2>
+      <form id="itemForm">
+        <div class="type-toggle" role="radiogroup" aria-label="Report type">
+          <label><input type="radio" name="type" value="lost" checked><span>I lost it</span></label>
+          <label><input type="radio" name="type" value="found"><span>I found it</span></label>
+        </div>
+
+        <label for="name">Item name</label>
+        <input id="name" required maxlength="60" placeholder="Black leather wallet">
+
+        <label for="location">Where?</label>
+        <input id="location" required maxlength="60" placeholder="Library, 2nd floor">
+
+        <label for="date">Date</label>
+        <input id="date" type="date" required>
+
+        <label for="contact">Contact (email or phone)</label>
+        <input id="contact" required maxlength="60" placeholder="you@example.com">
+
+        <label for="desc">Description</label>
+        <textarea id="desc" rows="3" maxlength="200" placeholder="Colour, brand, marks, anything that identifies it"></textarea>
+
+        <label for="photo">Photo (optional)</label>
+        <input id="photo" type="file" accept="image/*">
+        <div id="preview" class="preview" hidden>
+          <img id="previewImg" alt="Selected photo preview">
+          <button type="button" id="removePhoto">Remove photo</button>
+        </div>
+
+        <button type="submit">Post item</button>
+      </form>
+    </section>
+
+    <section class="listing">
+      <div class="controls">
+        <input id="search" type="search" placeholder="Search items or locations">
+        <div class="filters">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="lost">Lost</button>
+          <button class="chip" data-filter="found">Found</button>
+        </div>
+      </div>
+
+      <div id="items" class="items" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <script src="LnF.js"></script>
+</body>
+</html>
